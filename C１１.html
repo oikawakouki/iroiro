@@ -8,22 +8,26 @@
   <div id="player"></div>
   <br>(C)2009-2017 KEMCO/WorldWideSoftware<br>
      <form name ="form1">
-     <input id="ex1" type="number1" name="number" value=""> <input type="button" value="秒に 移動" onclick="skipbutton()">
+     <input id="ex1" type="number" name="number" value=""> <input type="button" value="秒に 移動" onclick="skipbutton()">
      </form>
   <script>
   // IFrame Player API コード を読み込む
+  /*
   var tag = document.createElement('script');
   tag.src = "https://www.youtube.com/iframe_api";
   var firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-      
+*/  
       function skipbutton(){
-          const number1 = document.form1.number1;
-          document.location.href =  "https://youtu.be/u5XboOOktq4?t"+"number1.value";
+          const number = parseInt(document.getElementById("ex1").value);
+          setTimeout(function(){
+            document.location.href =  "https://youtu.be/u5XboOOktq4?t"+"number1.value";
+          },number*1000);
+          
       }
       
       
-
+/*
   // IFrame Player API コードが読み込まれると onYouTubeIframeAPIReady関数が実行される
   function onYouTubeIframeAPIReady() {
    // 動画プレーヤーを挿入する YT.Player オブジェクトを作成する
@@ -41,6 +45,7 @@
   function onPlayerReady(event) {
    event.target.playVideo();
   }
+  */
   </script>
  </body>
 </html>
