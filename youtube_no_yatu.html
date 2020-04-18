@@ -8,16 +8,18 @@
   <div id="player"></div>
   <br>(C)2009-2017 KEMCO/WorldWideSoftware<br>
      <form name ="form1">
-     <input  type="number" name="number" placeholder=""> 
+     <input  type="number" name="number" id="sec" placeholder=""> 
      
-              <input type="button"　name="btn" value="秒に 移動" onclick="skipbutton">
+    <input type="button"　name="btn" value="秒に 移動" onclick="skipbutton()">
 </form>
   <script>
   // IFrame Player API コード を読み込む
   var tag = document.createElement('script');
   tag.src = "https://www.youtube.com/iframe_api";
   var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+//このコードをsetTimeout関数のクロ―ジャの処理に回す。      
+//firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       
    
 
@@ -40,8 +42,11 @@
    event.target.playVideo();
   }
       //指定した数値の秒数にシークバー移動
-   function skipbutton{
-          setTimeout(event.target.playVideo(),実行タイミング)
+   function skipbutton(){
+       var sec = document.getElementById("sec").value;
+       setTimeout(function(){
+           firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+       },sec*1000);
    }
    
       
